@@ -29,19 +29,24 @@ if p2_number > 4:
 
 if p1_number == p2_number:
     print("Correct! You hit the ship.")
-    result: str = RED_BOX
+    correct_result: str = RED_BOX 
+    if p2_number == 1:
+        print(correct_result + BLUE_BOX + BLUE_BOX + BLUE_BOX)
+    if p2_number == 2:
+        print(BLUE_BOX + correct_result + BLUE_BOX + BLUE_BOX)
+    if p2_number == 3:
+        print(BLUE_BOX + BLUE_BOX + correct_result + BLUE_BOX)
+    if p2_number == 4:
+        print(BLUE_BOX + BLUE_BOX + BLUE_BOX + correct_result)
+    
 else: 
     print("Incorrect! You missed the ship.")
-    result: str = WHITE_BOX
-
-if p2_number == 1:
-    print(result + BLUE_BOX + BLUE_BOX + BLUE_BOX)
-
-if p2_number == 2:
-    print(BLUE_BOX + result + BLUE_BOX + BLUE_BOX)
-
-if p2_number == 3:
-    print(BLUE_BOX + BLUE_BOX + result + BLUE_BOX)
-
-if p2_number == 4:
-    print(BLUE_BOX + BLUE_BOX + BLUE_BOX + result)
+    incorrect_result: str = WHITE_BOX 
+    if p2_number == 1:
+        print(incorrect_result + BLUE_BOX + BLUE_BOX + BLUE_BOX)
+    if p2_number == 2:
+        print(BLUE_BOX + incorrect_result + BLUE_BOX + BLUE_BOX)
+    if p2_number == 3:
+        print(BLUE_BOX + BLUE_BOX + incorrect_result + BLUE_BOX)
+    if p2_number == 4:
+        print(BLUE_BOX + BLUE_BOX + BLUE_BOX + incorrect_result)
