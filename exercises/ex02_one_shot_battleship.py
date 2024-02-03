@@ -25,7 +25,7 @@ while row_inbound:
     else:
         row_inbound = False
 
-# picking a column by asking for an input and running a while loop to ask them again if their guess is too high or low, if in range it sets inbound to false to end the loop
+# Picking a column by asking for an input and running a while loop to ask them again if their guess is too high or low, if in range it sets inbound to false to end the loop
 while column_inbound:
     column_choice: str = input("Guess a column: ")
     column_number: int = int(column_choice)
@@ -36,7 +36,7 @@ while column_inbound:
     else:
         column_inbound = False
 
-#Starting a row count and running a while loop until it equals grid size so it creates the proper number of rows for the grid
+# Starting a row count and running a while loop until it equals grid size so it creates the proper number of rows for the grid
 row_count: int = 1 
 while row_count <= grid_size:
     # Creating a storage str to concatenate to later and column count to run a while loop for each box that needs to be added to the row
