@@ -62,7 +62,7 @@ while row_count <= grid_size:
     print(row_str)
     row_count += 1
     
-# Checking if both guesses are and checks if one of the guesses is correct to provide a hint.
+# Checking if both guesses are and correct to print hit, then checks if one of the guesses is correct to provide a hint, else it is a miss
 if row_number == secret_row and column_number == secret_column:
     print("Hit!")
 elif row_number == secret_row and column_number != secret_column:
