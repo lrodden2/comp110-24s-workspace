@@ -1,4 +1,4 @@
-"""A slightly more complex form of battleship"""
+"""A slightly more complex form of battleship."""
 
 __author__ = "730576169"
 
@@ -36,21 +36,6 @@ while column_inbound:
     else:
         column_inbound = False
 
-# Checking if both guesses are and setting box for creating grid visual, also checks if one of the guesses is correct to provide a hint.
-if row_number == secret_row and column_number == secret_column:
-    result: str = ("Hit!")
-    box: str = RED_BOX
-elif row_number == secret_row and column_number != secret_column:
-    result: str = ("Close! Correct row, wrong column.")
-    box: str = WHITE_BOX
-elif row_number != secret_row and column_number == secret_column:
-    result: str = ("Close! Correct column, wrong row.")
-    box: str = WHITE_BOX
-else:
-    result: str = ("Miss!")
-    box: str = WHITE_BOX
-
-
 row_count: int = 1 
 while row_count <= grid_size:
     # creating a storage str
@@ -58,19 +43,32 @@ while row_count <= grid_size:
     column_count = 1
     # If this is the row they guessed it goes further on, else it just creates a string of blue boxes equal to the grid size
     if row_count == row_number:
-        #runs a while loop for each column checking if it is the one they guessed. If it is they add the box color depending of if it was right or wrong, otherwise it adds a blue box
+        # runs a while loop for each column checking if it is the one they guessed. If it is they add the box color depending of if it was right or wrong, otherwise it adds a blue box
         while column_count <= grid_size:
             if column_count == column_number:
-                row_str += str(box)
+                if column_number == secret_column and row_number == secret_row:
+                    row_str += str(RED_BOX)
+                else:
+                    row_str += str(WHITE_BOX)
+            
             else:
                 row_str += str(BLUE_BOX)
             column_count += 1
     else: 
-         while column_count <= grid_size:
-             row_str += str(BLUE_BOX)
-             column_count += 1
+        while column_count <= grid_size:
+            row_str += str(BLUE_BOX)
+            column_count += 1
     # Prints the row output and adds 1 to start the while loop again until it does repeats equal to the number of rows
     print(row_str)
     row_count += 1
-# prints whether they hit or miss or correctly geussed only one of numbers
-print(result)
+    
+# Checking if both guesses are and checks if one of the guesses is correct to provide a hint.
+if row_number == secret_row and column_number == secret_column:
+    print("Hit!")
+elif row_number == secret_row and column_number != secret_column:
+    print("Close! Correct row, wrong column.")
+elif row_number != secret_row and column_number == secret_column:
+    print("Close! Correct column, wrong row.")
+else:
+    print("Miss!")
+
