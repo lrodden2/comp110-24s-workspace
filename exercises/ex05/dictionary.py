@@ -2,15 +2,18 @@
 
 __author__ = "730576169"
 
-test_str: dict[str, str] = {"alice": "blue", "bob": "green", "steve": "blue"}
+test_str: dict[str, str] = {"alice": "red", "bob": "green", "steve": "blue"}
 test_list: list[str] = ["steve", "steve", "bob", "bill", "bob"]
+
 
 def invert(inv: dict[str, str]) -> dict[str, str]:
     """Inverts a dictionary of two strings."""
+    new_inv: dict[str, str] = {}
     for key in inv:
-        new_inv: dict[str,str] = {inv[key]: key}
-    if len(new_inv) != len(inv):
-        raise KeyError("Duplicate Keys!")
+        if inv[key] in new_inv:
+            raise KeyError("Duplicate Keys!")
+        else:
+            new_inv[inv[key]] = key
     return new_inv
 
 
@@ -33,7 +36,7 @@ def favorite_color(color: dict[str, str]) -> str:
 
 def count(a: list[str]) -> dict[str, int]:
     """Counts how many of a str are in a list."""
-    b:dict[str, int] = {}
+    b: dict[str, int] = {}
     for key in a:
         if key in b:
             b[key] += 1
@@ -43,8 +46,8 @@ def count(a: list[str]) -> dict[str, int]:
 
 
 def alphabetizer(a: list[str]) -> dict[str, list[str]]:
-    "Groups strings by first letter."
-    b:dict[str, list[str]] = {}
+    """Groups strings by first letter."""
+    b: dict[str, list[str]] = {}
     for key in a:
         if key[0].lower() in b:
             b[key[0].lower()].append(key)
@@ -53,5 +56,10 @@ def alphabetizer(a: list[str]) -> dict[str, list[str]]:
     return b
 
 
-
-print(alphabetizer(test_list))
+def update_attendance(a: dict[str, list[str]], dow: str, stu: str) -> None:
+    """Updates an attendance log."""
+    if dow in a:
+        a[dow].append(stu)
+    else:
+        a[dow] = [stu]
+    return None
