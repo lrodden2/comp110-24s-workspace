@@ -1,12 +1,17 @@
 import numpy as np
 import timeit
 import tracemalloc
+from random import randint
 
 MAX_VAL: int = 10 ** 5
 
 def random_descending_list(n: int) -> list[int]:
     """Generate a list of random descending integers."""
-    new_list: list[int] = []
+    idx: int = 1
+    new_list: list[int] = [randint(0, MAX_VAL)]
+    while idx < n:
+        new_list.append(new_list[idx-1] - randint(0, MAX_VAL))
+        idx += 1
     return new_list
 
 def evaluate_runtime(fn_name, start_size: int, end_size: int) -> np.array:
@@ -36,3 +41,5 @@ def evaluate_memory_usage(fn_name, start_size: int, end_size: int):
         usage.append(result[1])
     print(f"Memory usage of {fn_name} for input of size {end_size}: {result[1]} blocks of memory.")
     return np.array(usage)
+
+print(random_descending_list(4))
